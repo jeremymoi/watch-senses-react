@@ -51,7 +51,7 @@ const apiSearchLatest = cb => {
         }
       ]
     });
-  }, 2000);
+  }, 500);
 };
 
 /**

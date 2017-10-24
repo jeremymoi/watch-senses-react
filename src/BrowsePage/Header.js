@@ -13,7 +13,7 @@ var options = [
 ];
 
 const Container = styled.div`
-  margin: 10px;
+  margin: 10px 0;
 `;
 
 const FilterContainer = styled.div`
@@ -36,10 +36,6 @@ const DropdownSelect = styled(Select)`
 `;
 
 class Header extends Component {
-  componentDidUpdate(prevProps) {
-    console.log(prevProps.location.search, this.props.location.search);
-  }
-
   setFilter(key, value) {
     const { location, history } = this.props;
     const query = qs.parse(location.search);
@@ -48,6 +44,7 @@ class Header extends Component {
     } else {
       query[key] = value;
     }
+    delete query.page;
     history.push({
       ...location,
       search: qs.stringify(query)
