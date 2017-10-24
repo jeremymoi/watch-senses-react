@@ -30,6 +30,13 @@ const Container = styled.div`
   padding: 0px calc(50% - 960px / 2);
 `;
 
+const StyledPagination = styled(Pagination)`
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  margin-bottom: 60px;
+`;
+
 class BrowsePage extends Component {
   static propTypes = {
     pageSize: PropTypes.number
@@ -96,7 +103,7 @@ class BrowsePage extends Component {
           loading={loading}
         />
         {(!loading || watches !== null) && (
-          <Pagination
+          <StyledPagination
             prev
             next
             first
