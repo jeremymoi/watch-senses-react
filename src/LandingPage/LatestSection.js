@@ -152,7 +152,7 @@ class LatestSection extends Component {
           Browse private watch sales that are currently occurring online.
         </Description>
         <Items loading={loading}>
-          {items.map(item => <Item item={item} />)}
+          {items.map((item, i) => <Item key={i} item={item} />)}
         </Items>
         <LinkContainer to="/browse">
           <Button>Browse Watches</Button>
