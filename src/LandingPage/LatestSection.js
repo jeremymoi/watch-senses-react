@@ -2,57 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-
-const apiSearchLatest = cb => {
-  //  Call /search api with sort=latest, limit to 5
-  setTimeout(() => {
-    cb({
-      totalCount: 900992,
-      results: [
-        {
-          imageUrl:
-            "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-          brand: "Rolex",
-          name: "Daytona 1",
-          price: 999,
-          externalUrl: "https://google.com"
-        },
-        {
-          imageUrl:
-            "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-          brand: "Rolex",
-          name: "Daytona 2",
-          price: 999,
-          externalUrl: "https://google.com"
-        },
-        {
-          imageUrl:
-            "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-          brand: "Rolex",
-          name: "Daytona 3",
-          price: 999,
-          externalUrl: "https://google.com"
-        },
-        {
-          imageUrl:
-            "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-          brand: "Rolex",
-          name: "Daytona 4",
-          price: 999,
-          externalUrl: "https://google.com"
-        },
-        {
-          imageUrl:
-            "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-          brand: "Rolex",
-          name: "Daytona 5",
-          price: 999,
-          externalUrl: "https://google.com"
-        }
-      ]
-    });
-  }, 500);
-};
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 
 /**
  * UI
@@ -77,7 +28,7 @@ const Items = styled.div`
   transition: opacity 0.5s ease-in;
 `;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled.a`
   text-align: center;
   margin-bottom: 20px;
   display: inline-block;
@@ -87,12 +38,6 @@ const ItemImage = styled.img`
   width: 192px;
   height: 192px;
   object-fit: cover;
-`;
-
-const ItemBrand = styled.h6`
-  text-transform: uppercase;
-  margin: 0;
-  margin-bottom: 5px;
 `;
 
 const ItemName = styled.span`
@@ -107,11 +52,10 @@ const ItemPrice = styled.span`
   font-size: 12px;
 `;
 
-const Item = ({ item: { imageUrl, name, brand, price, externalUrl } }) => {
+const Item = ({ item: { imageUrl, name, price, url } }) => {
   return (
-    <ItemContainer>
+    <ItemContainer href={url} target="_blank">
       <ItemImage src={imageUrl} />
-      <ItemBrand>{brand}</ItemBrand>
       <ItemName>{name}</ItemName>
       <ItemPrice>${price}</ItemPrice>
     </ItemContainer>
@@ -122,28 +66,8 @@ const Item = ({ item: { imageUrl, name, brand, price, externalUrl } }) => {
  * Component
  */
 class LatestSection extends Component {
-  state = {
-    items: [
-      {
-        name: ".",
-        brand: ".",
-        price: "."
-      }
-    ],
-    loading: true
-  };
-
-  componentWillMount() {
-    apiSearchLatest(({ results }) => {
-      this.setState({
-        items: results,
-        loading: false
-      });
-    });
-  }
-
   render() {
-    const { items, loading } = this.state;
+    const { allWatchListings, loading } = this.props.data;
 
     return (
       <Container>
@@ -152,7 +76,8 @@ class LatestSection extends Component {
           Browse private watch sales that are currently occurring online.
         </Description>
         <Items loading={loading}>
-          {items.map((item, i) => <Item key={i} item={item} />)}
+          {allWatchListings &&
+            allWatchListings.map((item, i) => <Item key={i} item={item} />)}
         </Items>
         <LinkContainer to="/browse">
           <Button>Browse Watches</Button>
@@ -162,4 +87,15 @@ class LatestSection extends Component {
   }
 }
 
-export default LatestSection;
+const LatestWatches = gql`
+  query LatestWatches {
+    allWatchListings(orderBy: createdAt_DESC, first: 5) {
+      id
+      imageUrl
+      name
+      price
+      url
+    }
+  }
+`;
+export default graphql(LatestWatches)(LatestSection);
