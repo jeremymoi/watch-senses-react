@@ -7,7 +7,7 @@ const Container = styled.div`
   transition: opacity 0.5s ease-in;
 `;
 
-const WatchContainer = styled.div`
+const WatchContainer = styled.a`
   text-align: center;
   margin-bottom: 20px;
   display: inline-block;
@@ -37,11 +37,10 @@ const WatchPrice = styled.span`
   font-size: 12px;
 `;
 
-const Watch = ({ watch: { imageUrl, name, brand, price, externalUrl } }) => {
+const Watch = ({ watch: { imageUrl, name, price, url } }) => {
   return (
-    <WatchContainer>
+    <WatchContainer href={url} target="_blank">
       <WatchImage src={imageUrl} />
-      <WatchBrand>{brand}</WatchBrand>
       <WatchName>{name}</WatchName>
       <WatchPrice>${price}</WatchPrice>
     </WatchContainer>
@@ -51,6 +50,7 @@ const Watch = ({ watch: { imageUrl, name, brand, price, externalUrl } }) => {
 class WatchesContainer extends Component {
   render() {
     const { watches, loading } = this.props;
+
     return (
       <Container loading={loading}>
         {watches.map((watch, i) => <Watch watch={watch} key={i} />)}

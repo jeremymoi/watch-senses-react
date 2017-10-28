@@ -5,26 +5,10 @@ import WatchesContainer from "./WatchesContainer";
 import qs from "query-string";
 import { Pagination } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 
-const apiSearch = ({ text, brand, sort, page = 0, pageSize }, cb) => {
-  setTimeout(() => {
-    const results = [];
-    for (let i = 0; i < pageSize; i++) {
-      results.push({
-        imageUrl:
-          "https://www.rolex.com/content/dam/rolex/catalog/watch-grid/m1/266/00/m126600-0001.jpg",
-        brand: "Rolex",
-        name: `Daytona ${page * pageSize + i + 1}`,
-        price: 999,
-        externalUrl: "https://google.com"
-      });
-    }
-    cb({
-      totalCount: 208,
-      results
-    });
-  }, 500);
-};
+const pageSize = 2;
 
 const Container = styled.div`
   padding: 0px calc(50% - 960px / 2);
@@ -38,24 +22,6 @@ const StyledPagination = styled(Pagination)`
 `;
 
 class BrowsePage extends Component {
-  static propTypes = {
-    pageSize: PropTypes.number
-  };
-
-  static defaultProps = {
-    pageSize: 20
-  };
-
-  state = {
-    watches: null,
-    totalCount: 0,
-    loading: null
-  };
-
-  componentWillMount() {
-    this.refetch();
-  }
-
   componentDidUpdate(prevProps) {
     const { location } = this.props;
     if (prevProps.location !== location) {
@@ -81,28 +47,26 @@ class BrowsePage extends Component {
     this.setState({ loading: true });
     const { location, pageSize } = this.props;
     const query = qs.parse(location.search);
-    apiSearch({ ...query, pageSize }, response => {
-      this.setState({
-        loading: false,
-        totalCount: response.totalCount,
-        watches: response.results
-      });
-    });
   }
 
   render() {
-    const { location, pageSize } = this.props;
-    const { watches, loading, totalCount } = this.state;
+    const { location } = this.props;
+    const {
+      _allWatchListingsMeta,
+      allWatchListings,
+      loading
+    } = this.props.data;
     const query = qs.parse(location.search);
+    const count = _allWatchListingsMeta ? _allWatchListingsMeta.count : 0;
     return (
       <Container>
         <Header />
         <WatchesContainer
           pageSize={pageSize}
-          watches={watches || []}
+          watches={allWatchListings || []}
           loading={loading}
         />
-        {(!loading || watches !== null) && (
+        {(!loading || _allWatchListingsMeta !== undefined) && (
           <StyledPagination
             prev
             next
@@ -110,7 +74,7 @@ class BrowsePage extends Component {
             last
             ellipsis
             boundaryLinks
-            items={Math.ceil(totalCount / pageSize)}
+            items={Math.ceil(count / pageSize)}
             maxButtons={5}
             activePage={parseInt(query.page, 10) || 1}
             onSelect={this.handlePageChange}
@@ -121,4 +85,55 @@ class BrowsePage extends Component {
   }
 }
 
-export default BrowsePage;
+const BrowseWatches = gql`
+query BrowseWatches(
+  $sort: WatchListingOrderBy
+  $skip: Int
+  $name: String
+  $brand: String
+) {
+  allWatchListings(
+    orderBy: $sort
+    skip: $skip
+    first: ${pageSize}
+    filter: {
+      brand: {
+        name: $brand
+      }
+      name_contains: $name
+    }
+  ){
+    id
+    imageUrl
+    name
+    price
+    url
+  }
+  _allWatchListingsMeta(
+
+    filter: {
+      brand: {
+        name: $brand
+      }
+      name_contains: $name
+    }
+  ){
+    count
+  }
+}
+`;
+
+export default graphql(BrowseWatches, {
+  options: props => {
+    const { location } = props;
+    const query = qs.parse(location.search);
+    return {
+      variables: {
+        name: query.search,
+        brand: query.brand,
+        skip: (parseInt(query.page || 1) - 1) * pageSize,
+        sort: query.sort || "createdAt_DESC"
+      }
+    };
+  }
+})(BrowsePage);

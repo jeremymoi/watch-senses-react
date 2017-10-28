@@ -9,7 +9,7 @@ import qs from "query-string";
 var options = [
   { value: "", label: "Any Brands" },
   { value: "Rolex", label: "Rolex" },
-  { value: "Not Rolex", label: "Not Rolex" }
+  { value: "Omega", label: "Omega" }
 ];
 
 const Container = styled.div`
@@ -56,7 +56,7 @@ class Header extends Component {
   };
 
   handleSortChange = ({ value }) => {
-    this.setFilter("sort", value === "latest" ? null : value);
+    this.setFilter("sort", value === "createdAt_DESC" ? null : value);
   };
 
   handleSearchPress = e => {
@@ -90,11 +90,11 @@ class Header extends Component {
             onChange={this.handleBrandChange}
           />
           <DropdownSelect
-            value={query.sort || "latest"}
+            value={query.sort || "createdAt_DESC"}
             options={[
-              { value: "latest", label: "Latest" },
-              { value: "low", label: "Price Low to High" },
-              { value: "high", label: "Price High to Low" }
+              { value: "createdAt_DESC", label: "Latest" },
+              { value: "price_ASC", label: "Price Low to High" },
+              { value: "price_DESC", label: "Price High to Low" }
             ]}
             clearable={false}
             onChange={this.handleSortChange}
