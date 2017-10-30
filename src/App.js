@@ -5,6 +5,7 @@ import BrowsePage from "./BrowsePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import client from "./apollo";
+import Footer from "./Footer";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
               <Route exact path="/browse" component={BrowsePage} />
               <Route component={() => <div>Not found</div>} />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </ApolloProvider>

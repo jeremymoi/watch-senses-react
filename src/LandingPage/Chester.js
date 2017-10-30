@@ -1,26 +1,31 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  display: flex;
+const Span = styled.div`
+  display: block;
   text-align: center;
-  padding: 10px calc(50% - 960px);
+  padding: 80px calc(50% - 960px);
+  font-style: italic;
+  font-variant: petite-caps;
+  margin: 100px;
+`;
+
+const Blacklogo = styled.img`
+  margin-top: 225px;
+  max-height: 45px;
 `;
 
 class Chester extends Component {
   render() {
     return (
-      <Container>
-        <span>
-          <p>
-            "We aim to create ease, convenience and peace of mind for the modern
-            online watch buyer."
-          </p>
-          <p>-Chester Lau, Co-Founder, WatchSenses</p>
-        </span>
-
-        <img src="/assets/chesterlau.jpg" alt="Chester" />
-      </Container>
+      <Span>
+        <p>
+          "We aim to create ease, convenience and peace of mind for the modern
+          online watch buyer."
+        </p>
+        <p>-Chester Lau, Co-Founder, WatchSenses</p>
+        <Blacklogo src="/assets/black_logo.png" />
+      </Span>
     );
   }
 }

@@ -4,11 +4,10 @@ import Header from "./Header";
 import WatchesContainer from "./WatchesContainer";
 import qs from "query-string";
 import { Pagination } from "react-bootstrap";
-import PropTypes from "prop-types";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-const pageSize = 2;
+const pageSize = 20;
 
 const Container = styled.div`
   padding: 0px calc(50% - 960px / 2);

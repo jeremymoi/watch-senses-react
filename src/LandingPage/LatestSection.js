@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -20,18 +19,20 @@ const Header = styled.h4`
 `;
 
 const Description = styled.p`
-  margin: 10px;
+  margin: 20px;
 `;
 
 const Items = styled.div`
   opacity: ${props => (props.loading ? 0 : 1)};
   transition: opacity 0.5s ease-in;
+  display: flex;
+  all: inherit;
 `;
 
 const ItemContainer = styled.a`
   text-align: center;
   margin-bottom: 20px;
-  display: inline-block;
+  display: inline-grid;
 `;
 
 const ItemImage = styled.img`
@@ -44,12 +45,25 @@ const ItemName = styled.span`
   text-transform: uppercase;
   color: #aaa;
   font-size: 12px;
-  display: block;
+  display: inline-grid;
+  text-align: center;
+  word-wrap: break-word;
+  margin: 5px;
+  width: 192px;
 `;
 
 const ItemPrice = styled.span`
   color: #aaa;
   font-size: 12px;
+`;
+
+const Button = styled.button`
+  margin-bottom: 40px;
+  margin-top: 20px;
+  padding: 0.5em 3em;
+  background-color: gold;
+  font-weight: bolder;
+  text-transform: uppercase;
 `;
 
 const Item = ({ item: { imageUrl, name, price, url } }) => {
@@ -73,7 +87,7 @@ class LatestSection extends Component {
       <Container>
         <Header>Trending Online</Header>
         <Description>
-          Browse private watch sales that are currently occurring online.
+          Browse curated private watch sales from our partners.
         </Description>
         <Items loading={loading}>
           {allWatchListings &&

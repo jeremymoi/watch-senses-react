@@ -19,17 +19,15 @@ const WatchImage = styled.img`
   object-fit: cover;
 `;
 
-const WatchBrand = styled.h6`
-  text-transform: uppercase;
-  margin: 0;
-  margin-bottom: 5px;
-`;
-
 const WatchName = styled.span`
   text-transform: uppercase;
   color: #aaa;
   font-size: 12px;
   display: block;
+  text-align: center;
+  word-wrap: break-word;
+  margin: 5px;
+  width: 192px;
 `;
 
 const WatchPrice = styled.span`
