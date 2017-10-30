@@ -13,7 +13,13 @@ var options = [
 ];
 
 const Container = styled.div`
-  margin: 10px 0;
+  margin: 25px;
+`;
+
+const Title = styled.h4`
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  font-weight: bolder;
 `;
 
 const FilterContainer = styled.div`
@@ -71,7 +77,7 @@ class Header extends Component {
     const query = qs.parse(location.search);
     return (
       <Container>
-        <h4>Browse Online Watch</h4>
+        <Title>Browse Online Watch</Title>
 
         <FilterContainer>
           <InputWrapper>

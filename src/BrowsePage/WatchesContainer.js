@@ -5,12 +5,16 @@ import { withRouter } from "react-router";
 const Container = styled.div`
   opacity: ${props => (props.loading ? 0.3 : 1)};
   transition: opacity 0.5s ease-in;
+  display: flex;
+  all: inherit;
+  text-align: -webkit-center;
+  margin-top: 35px;
 `;
 
 const WatchContainer = styled.a`
   text-align: center;
   margin-bottom: 20px;
-  display: inline-block;
+  display: inline-grid;
 `;
 
 const WatchImage = styled.img`
@@ -23,7 +27,7 @@ const WatchName = styled.span`
   text-transform: uppercase;
   color: #aaa;
   font-size: 12px;
-  display: block;
+  display: inline-grid;
   text-align: center;
   word-wrap: break-word;
   margin: 5px;

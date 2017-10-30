@@ -10,7 +10,7 @@ import gql from "graphql-tag";
 const pageSize = 20;
 
 const Container = styled.div`
-  padding: 0px calc(50% - 960px / 2);
+  padding: 10px calc(50% - 1060px / 2);
 `;
 
 const StyledPagination = styled(Pagination)`
