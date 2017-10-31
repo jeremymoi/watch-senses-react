@@ -12,10 +12,11 @@ const Container = styled.div`
   padding: 0px calc(50% - 960px);
 `;
 
-const Header = styled.h4`
+const Pref = styled.h4`
   margin: 10px;
   margin-top: 50px;
   text-transform: uppercase;
+  font-weight: bolder;
 `;
 
 const Description = styled.p`
@@ -85,7 +86,7 @@ class LatestSection extends Component {
 
     return (
       <Container>
-        <Header>Trending Online</Header>
+        <Pref>Prefer to do it yourself?</Pref>
         <Description>
           Browse curated private watch sales from our partners.
         </Description>
@@ -94,7 +95,7 @@ class LatestSection extends Component {
             allWatchListings.map((item, i) => <Item key={i} item={item} />)}
         </Items>
         <LinkContainer to="/browse">
-          <Button>Browse Watches</Button>
+          <Button>Browse More Watches</Button>
         </LinkContainer>
       </Container>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { LinkContainer } from "react-router-bootstrap";
 
 /** UI **/
 const Container = styled.div`
@@ -59,27 +58,27 @@ class GetaQuote extends Component {
   render() {
     return (
       <Container>
-        <Header>We tell you if a watch is worth buying</Header>
+        <Header>We help you find your next pre-owned luxury watch</Header>
         <Offerings>
           <Value>
             <Hat>UPLOAD DETAILS</Hat>
-            <p>Send us details of the watch you want to sell.</p>
+            <p>Send us details of the watch you are looking for.</p>
           </Value>
           <Value>
-            <Hat>GET AN ANALYSIS</Hat>
-            <p>
-              Once we receive your information, give us 3 to 5 working days to
-              do our job.
-            </p>
+            <Hat>SEARCH BEGINS</Hat>
+            <p>Give us 3 to 5 working days to find you a suitable deal.</p>
           </Value>
           <Value>
-            <Hat>LET US HELP YOU</Hat>
-            <p>We can assist you in purchasing the watch. Just tell us!</p>
+            <Hat>WAIT FOR IT</Hat>
+            <p>We let you know if we find something good!</p>
           </Value>
         </Offerings>
-        <LinkContainer to="/browse">
-          <Button>GET A QUOTE NOW</Button>
-        </LinkContainer>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe_RLXnWmcQsgLFnyn2DC5LIakKnBXzDcYVmllRwTNduEiIxw/viewform?usp=sf_link"
+          target="_blank"
+        >
+          <Button>START FINDING</Button>
+        </a>
       </Container>
     );
   }
