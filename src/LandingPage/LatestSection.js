@@ -16,11 +16,16 @@ const Pref = styled.h4`
   margin: 10px;
   margin-top: 50px;
   text-transform: uppercase;
-  font-weight: bolder;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  font-family: "Montserrat";
 `;
 
 const Description = styled.p`
   margin: 20px;
+  font-family: "Laro";
+  letter-spacing: 0.1em;
 `;
 
 const Items = styled.div`
@@ -60,11 +65,17 @@ const ItemPrice = styled.span`
 
 const Button = styled.button`
   margin-bottom: 40px;
-  margin-top: 20px;
-  padding: 0.5em 3em;
-  background-color: gold;
-  font-weight: bolder;
+  margin-top: 30px;
+  padding: 1em 2em;
+  background-color: transparent;
   text-transform: uppercase;
+  border-radius: 14px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.05em;
+  color: #9a0612;
+  border: #9a0612;
+  border-width: 3px;
+  border-style: ridge;
 `;
 
 const Item = ({ item: { imageUrl, name, price, url } }) => {
@@ -86,9 +97,10 @@ class LatestSection extends Component {
 
     return (
       <Container>
-        <Pref>Prefer to do it yourself?</Pref>
+        <Pref>Browse our curated collection</Pref>
         <Description>
-          Browse curated private watch sales from our partners.
+          This marketplace is curated to only offer top quality deals from
+          trusted dealers.
         </Description>
         <Items loading={loading}>
           {allWatchListings &&

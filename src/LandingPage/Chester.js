@@ -20,10 +20,11 @@ class Chester extends Component {
     return (
       <Span>
         <p>
-          "We aim to create ease, convenience and peace of mind for the modern
-          online watch buyer."
+          "The online marketplace for pre-owned luxury watches is confusing, too
+          focused on price and messy. We want to help young watch collectors
+          navigate this challenging landscape."
         </p>
-        <p>-Chester Lau, Co-Founder, WatchSenses</p>
+        <p>-Jeremy Ng, Co-Founder, WatchSenses</p>
         <Blacklogo src="/assets/black_logo.png" />
       </Span>
     );
