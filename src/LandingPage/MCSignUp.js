@@ -6,6 +6,13 @@ const Container = styled.div`
   padding: 100px calc(50% - 960px);
 `;
 
+const Intro = styled.p`
+  font-family: "Laro";
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-size: 16px;
+`;
+
 const Group = styled.div`
   margin: 30px;
   display: inline-flex;
@@ -19,17 +26,23 @@ const Input = styled.input`
   width: 200px;
   margin-bottom: 40px;
   margin-top: 20px;
-  padding: 0.5em 3em;
-  background-color: gold;
-  font-weight: bolder;
   text-transform: uppercase;
+  padding: 1em 2em;
+  background-color: #9a0612;
+  border-radius: 14px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.05em;
+  color: white;
 `;
 
 class MCSignUp extends Component {
   render() {
     return (
       <Container>
-        Subscribe to our newsletter for updates and interesting news.
+        <Intro>
+          We reach out monthly and provide you with updates to our site, new
+          watches in our collection and any other promotions.
+        </Intro>
         <form
           action="https://watchsenses.us16.list-manage.com/subscribe/post?u=d73d8b547a99501941e955455&amp;id=0ad0cebfc0"
           method="post"

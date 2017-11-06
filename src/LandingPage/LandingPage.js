@@ -3,6 +3,7 @@ import LatestSection from "./LatestSection";
 import GetaQuote from "./GetaQuote";
 import HowItWorks from "./HowItWorks";
 import Chester from "./Chester";
+import BrandsWeCarry from "./BrandsWeCarry";
 import MCSignUp from "./MCSignUp";
 
 class LandingPage extends Component {
@@ -13,6 +14,7 @@ class LandingPage extends Component {
         <HowItWorks />
         <LatestSection />
         <Chester />
+        <BrandsWeCarry />
         <MCSignUp />
       </div>
     );
