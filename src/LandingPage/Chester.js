@@ -5,9 +5,10 @@ const Span = styled.div`
   display: block;
   text-align: center;
   padding: 80px calc(50% - 960px);
-  font-style: italic;
-  font-variant: petite-caps;
+  font-family: "Montserrat";
   margin: 100px;
+  font-weight: 300;
+  font-size: 20px;
 `;
 
 const Blacklogo = styled.img`

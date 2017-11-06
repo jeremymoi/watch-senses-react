@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import "react-select/dist/react-select.css";
-import { Grid, Row, Col, Clearfix } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 const Header = styled.h4`
   font-family: "Montserrat";
@@ -13,11 +13,17 @@ const Header = styled.h4`
 
 const Logo = styled.img`
   padding-top: inherit;
-  max-height: 100px;
+  max-height: 90px;
+`;
+
+const Group = styled.div`
+  display: block;
 `;
 
 const Runner = styled.div`
   justify-content: center;
+  display: flex;
+  padding: 20px;
 `;
 
 class BrandsWeCarry extends Component {
@@ -25,7 +31,7 @@ class BrandsWeCarry extends Component {
     return (
       <div>
         <Header>Brands we carry in our Collection</Header>
-        <Grid>
+        <Group>
           <Runner>
             <Col xs={6} md={2} offset={2}>
               <Logo src="/assets/glashutte.jpg" />
@@ -51,7 +57,7 @@ class BrandsWeCarry extends Component {
               <Logo src="/assets/zenith.jpg" />
             </Col>
           </Runner>
-        </Grid>
+        </Group>
       </div>
     );
   }

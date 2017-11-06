@@ -18,7 +18,7 @@ const Offerings = styled.div`
 `;
 
 const Value = styled.div`
-  display: inline-block;
+  display: inline-grid;
   text-align: center;
   width: 250px;
   height: 100px;
@@ -26,7 +26,6 @@ const Value = styled.div`
 `;
 
 const Hat = styled.h5`
-  display: inline-block;
   margin: 5px;
   text-transform: uppercase;
   font-size: 14px;
