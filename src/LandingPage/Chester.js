@@ -11,8 +11,12 @@ const Span = styled.div`
   font-size: 20px;
 `;
 
+const Words = styled.p`
+  padding: 10px 10%;
+`;
+
 const Blacklogo = styled.img`
-  margin-top: 225px;
+  margin-top: 190px;
   max-height: 45px;
 `;
 
@@ -20,11 +24,11 @@ class Chester extends Component {
   render() {
     return (
       <Span>
-        <p>
+        <Words>
           "The online marketplace for pre-owned luxury watches is confusing, too
           focused on price and messy. We want to help young watch collectors
           navigate this challenging landscape."
-        </p>
+        </Words>
         <p>-Jeremy Ng, Co-Founder, WatchSenses</p>
         <Blacklogo src="/assets/black_logo.png" />
       </Span>

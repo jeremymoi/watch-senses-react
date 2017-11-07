@@ -25,7 +25,7 @@ const Liner = styled.h5`
   font-family: "Laro", serif;
   font-size: 18px;
   color: white;
-  padding: 50px 150px 50px 150px;
+  padding: 50px 12%;
   letter-spacing: 0.1em;
   line-height: 1.5;
 `;

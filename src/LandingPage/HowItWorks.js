@@ -10,19 +10,15 @@ const Title = styled.h4`
   padding-top: 50px;
 `;
 
-const Offerings = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-  padding-top: 60px;
+const Form = styled.div`
+  text-align: center;
 `;
 
-const Value = styled.div`
-  display: inline-grid;
-  text-align: center;
+const Group = styled.div`
   width: 250px;
   height: 100px;
   margin: 15px;
+  display: inline-grid;
 `;
 
 const Hat = styled.h5`
@@ -44,25 +40,25 @@ class HowItWorks extends Component {
     return (
       <div>
         <Title>HOW IT WORKS</Title>
-        <Offerings>
-          <Value>
+        <Form>
+          <Group>
             <Hat>SEND IN A REQUEST</Hat>
             <P>Take 5 minutes to fill in our 'Get a recommendation' form.</P>
-          </Value>
-          <Value>
+          </Group>
+          <Group>
             <Hat>LET US FIND YOUR WATCH</Hat>
             <P>
               Give us 3 to 5 working days to source for a piece that suits you.
             </P>
-          </Value>
-          <Value>
+          </Group>
+          <Group>
             <Hat>COME DOWN TO TRY</Hat>
             <P>
               If you like our recommendation and we have the watch, come meet us
               to try it!
             </P>
-          </Value>
-        </Offerings>
+          </Group>
+        </Form>
       </div>
     );
   }

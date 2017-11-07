@@ -24,6 +24,7 @@ const Pref = styled.h4`
 
 const Description = styled.p`
   margin: 20px;
+  margin-bottom: 60px;
   font-family: "Laro";
   letter-spacing: 0.1em;
 `;
@@ -49,7 +50,8 @@ const ItemImage = styled.img`
 
 const ItemName = styled.span`
   text-transform: uppercase;
-  color: #aaa;
+  color: #9a0612;
+  font-family: "Montserrat";
   font-size: 12px;
   display: inline-grid;
   text-align: center;
@@ -60,7 +62,9 @@ const ItemName = styled.span`
 
 const ItemPrice = styled.span`
   color: #aaa;
-  font-size: 12px;
+  font-size: 10px;
+  font-style: italic;
+  font-family: "Laro";
 `;
 
 const Button = styled.button`
