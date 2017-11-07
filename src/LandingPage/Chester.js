@@ -6,7 +6,7 @@ const Span = styled.div`
   text-align: center;
   padding: 80px calc(50% - 960px);
   font-family: "Montserrat";
-  margin: 100px;
+  margin: 100px 0px;
   font-weight: 300;
   font-size: 20px;
 `;

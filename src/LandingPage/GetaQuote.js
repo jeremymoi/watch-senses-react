@@ -37,9 +37,6 @@ const Button = styled.button`
   border-radius: 14px;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.05em;
-`;
-
-const A = styled.p`
   color: white;
 `;
 
@@ -53,13 +50,14 @@ class GetaQuote extends Component {
           crowded marketplaces. Get tailored recommendations based on your
           preferences, style and budget. Do all these easily in 5 minutes.
         </Liner>
-        <A
+
+        <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSe_RLXnWmcQsgLFnyn2DC5LIakKnBXzDcYVmllRwTNduEiIxw/viewform?usp=sf_link"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Button>GET A RECOMMENDATION</Button>
-        </A>
+        </a>
       </Container>
     );
   }
