@@ -13,6 +13,10 @@ const Logo = styled.img`
   padding-top: inherit;
 `;
 
+const Subclass = styled.h3`
+  align: right;
+`;
+
 class Topbar extends Component {
   render() {
     return (
@@ -20,6 +24,8 @@ class Topbar extends Component {
         <LinkContainer to="/">
           <Logo src="/assets/white_logo.png" />
         </LinkContainer>
+        <Subclass>About</Subclass>
+        <Subclass>How It Works</Subclass>
       </Container>
     );
   }
